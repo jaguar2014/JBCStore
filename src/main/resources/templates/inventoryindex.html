@@ -9,12 +9,52 @@
 <body>
 <p>Welcome to JBC Grocery Store</p>
 
-<ul>
+<!--Navivation elements -->
+<ul display="none">
     <a th:href="@{/addCosmetics}"><li >Add Cosmetic Inventroy</li></a>
     <a th:href="@{/addCleaning}"><li >Add Cleaning Inventroy</li></a>
     <a th:href="@{/addSnacks}"><li >Add Snacks Inventroy</li></a>
 
 </ul>
+
+<!--end of navivation -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 well">
+            <p th:inline="text">Total Number of Snacks [[${snackTotalCount}]]</p>
+            <p th:inline="text">Total Price of Snacks [[${snackTotalPrice}]]</p>
+
+
+        </div>
+        <div class="col-md-3 well">
+            <p th:inline="text">Total Number of Cosmetics [[${cosmeticTotalCount}]]</p>
+            <p th:inline="text">Total Price of Cosmetics [[${cosmeticTotalPrice}]]</p>
+
+        </div>
+        <div class="col-md-3 well">
+
+            <p th:inline="text">Total Number of Cleaning Items [[${cleaningTotalCount}]]</p>
+            <p th:inline="text">Total Price of Cleaning Items [[${cleaningTotalPrice}]]</p>
+
+        </div>
+        <div class="col-md-3 well">
+            <p th:inline="text">Total inventory  count [[${totalInventoryCount}]]</p>
+            <p th:inline="text">Total inventory  Price [[${totalInventoryPrice}]]</p>
+
+
+
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous" />
 </body>

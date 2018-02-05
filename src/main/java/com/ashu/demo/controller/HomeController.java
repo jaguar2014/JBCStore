@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class HomeController {
@@ -25,9 +27,61 @@ public class HomeController {
     @Autowired
     CleaningItemsRepository cleaningItemsRepository;
 
+    public static double snackTotalPrice = 0.0;
+    public static double cosmeticTotalPrice = 0.0;
+    public static double cleaningTotalPrice = 0.0;
+    public static long totalInventoryCount = 0;
+    public static double totalInventoryPrice = 0.0;
+    public static long cleaningTotalCount = 0;
+    public static long cosmeticTotalCount=0;
+    public static long snackTotalCount=0;
 
     @GetMapping("/")
-    public String showIndex() {
+    public String showIndex(Model model) {
+
+        /*snackTotalCount = snacksRepository.count();
+
+        Iterable<Snacks> allSnacks = snacksRepository.findAll();
+
+        for (Snacks s :
+                allSnacks) {
+            snackTotalPrice += s.getPrice();
+        }
+
+        cosmeticTotalCount = cosmeticsRepository.count();
+
+        Iterable<Cosmetics> allCosmetics = cosmeticsRepository.findAll();
+
+        for (Cosmetics c :
+                allCosmetics) {
+            cosmeticTotalPrice += c.getPrice();
+        }
+
+        cleaningTotalCount = cleaningItemsRepository.count();
+
+        Iterable<CleaningItems> allCleaning = cleaningItemsRepository.findAll();
+
+        for (CleaningItems c :
+                allCleaning) {
+            cleaningTotalPrice += c.getPrice();
+        }*/
+
+        totalInventoryCount = snackTotalCount + cosmeticTotalCount + cleaningTotalCount;
+        totalInventoryPrice = cosmeticTotalPrice + snackTotalPrice + cleaningTotalPrice;
+
+        model.addAttribute("snackTotalCount", snackTotalCount);
+        model.addAttribute("snackTotalPrice", snackTotalPrice);
+
+        model.addAttribute("cosmeticTotalCount", cosmeticTotalCount);
+        model.addAttribute("cosmeticTotalPrice", cosmeticTotalPrice);
+
+        model.addAttribute("cleaningTotalPrice", cleaningTotalPrice);
+        model.addAttribute("cleaningTotalCount", cleaningTotalCount);
+
+        model.addAttribute("totalInventoryCount", totalInventoryCount);
+        model.addAttribute("totalInventoryPrice", totalInventoryPrice);
+
+
         return "inventoryindex";
     }
 
@@ -41,15 +95,29 @@ public class HomeController {
     }
 
     @PostMapping("/addSnacks")
-    public String addSnacks(@Valid Snacks snack , BindingResult result) {
+    public String addSnacks(@Valid Snacks snack, Model model, BindingResult result) {
 
-        if(result.hasErrors()){
+
+        if (result.hasErrors()) {
             return "snackform";
         }
         snacksRepository.save(snack);
 
+        snackTotalCount = snacksRepository.count();
 
-        return "inventoryindex";
+        Iterable<Snacks> allSnacks = snacksRepository.findAll();
+
+        for (Snacks s :
+                allSnacks) {
+            snackTotalPrice += s.getPrice();
+        }
+
+
+        model.addAttribute("snackTotalCount", snackTotalCount);
+        model.addAttribute("snackTotalPrice", snackTotalPrice);
+
+        return "redirect:/";
+
 
     }
 
@@ -62,19 +130,33 @@ public class HomeController {
     }
 
     @PostMapping("/addCosmetics")
-    public String addSnacks(@Valid Cosmetics cosmetic , BindingResult result) {
+    public String addSnacks(@Valid Cosmetics cosmetic, Model model, BindingResult result) {
 
-        if(result.hasErrors()){
+
+        if (result.hasErrors()) {
             return "cosmeticform";
         }
         cosmeticsRepository.save(cosmetic);
 
+        cosmeticTotalCount = cosmeticsRepository.count();
 
-        return "inventoryindex";
+        Iterable<Cosmetics> allCosmetics = cosmeticsRepository.findAll();
+
+        for (Cosmetics c :
+                allCosmetics) {
+            cosmeticTotalPrice += c.getPrice();
+        }
+
+
+        model.addAttribute("cosmeticTotalCount", cosmeticTotalCount);
+        model.addAttribute("cosmeticTotalPrice", cosmeticTotalPrice);
+
+
+        return "redirect:/";
 
     }
 
- @GetMapping("/addCleaning")
+    @GetMapping("/addCleaning")
     public String addCleaning(Model model) {
         model.addAttribute("cleaning", new CleaningItems());
 
@@ -83,18 +165,31 @@ public class HomeController {
     }
 
     @PostMapping("/addCleaning")
-    public String addCleaString(@Valid CleaningItems cleaning , BindingResult result) {
+    public String addCleaString(@Valid CleaningItems cleaning, Model model, BindingResult result) {
 
-        if(result.hasErrors()){
+
+        if (result.hasErrors()) {
             return "cleaningitemform";
         }
         cleaningItemsRepository.save(cleaning);
 
 
-        return "inventoryindex";
+        cleaningTotalCount = cleaningItemsRepository.count();
+
+        Iterable<CleaningItems> allCleaning = cleaningItemsRepository.findAll();
+
+        for (CleaningItems c :
+                allCleaning) {
+            cleaningTotalPrice += c.getPrice();
+        }
+
+
+        model.addAttribute("cleaningTotalPrice", cleaningTotalPrice);
+        model.addAttribute("cleaningTotalPrice", cleaningTotalCount);
+
+        return "redirect:/";
 
     }
-
 
 
 }
