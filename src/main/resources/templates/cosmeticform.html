@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Snack Inventory Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+</head>
+<body>
+<form th:action="@{/addCosmetics}" th:object="${cosmetic}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <input type="text" th:field="*{brand}" />
+    <span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"></span> <br/>
+
+
+    <input type="text" th:field="*{popularity}" />
+    <span th:if="${#fields.hasErrors('popularity')}" th:errors="*{popularity}"></span> <br/>
+
+
+    <input type="number" th:field="*{price}" />
+    <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span> <br/>
+
+
+    <input type="number" th:field="*{quantity}" />
+    <span th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></span> <br/>
+
+
+    <input type="submit" class="btn btn-primary" value="Save" />
+
+
+</form>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>
