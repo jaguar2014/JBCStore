@@ -103,12 +103,13 @@ public class HomeController {
         }
         snacksRepository.save(snack);
 
-        snackTotalCount = snacksRepository.count();
+        //snackTotalCount = snacksRepository.count();
 
         Iterable<Snacks> allSnacks = snacksRepository.findAll();
 
         for (Snacks s :
                 allSnacks) {
+            snackTotalCount+=s.getQuantity();
             snackTotalPrice += s.getPrice();
         }
 
@@ -138,12 +139,13 @@ public class HomeController {
         }
         cosmeticsRepository.save(cosmetic);
 
-        cosmeticTotalCount = cosmeticsRepository.count();
+       // cosmeticTotalCount = cosmeticsRepository.count();
 
         Iterable<Cosmetics> allCosmetics = cosmeticsRepository.findAll();
 
         for (Cosmetics c :
                 allCosmetics) {
+            cosmeticTotalCount+=c.getQuantity();
             cosmeticTotalPrice += c.getPrice();
         }
 
@@ -174,12 +176,13 @@ public class HomeController {
         cleaningItemsRepository.save(cleaning);
 
 
-        cleaningTotalCount = cleaningItemsRepository.count();
+      //  cleaningTotalCount = cleaningItemsRepository.count();
 
         Iterable<CleaningItems> allCleaning = cleaningItemsRepository.findAll();
 
         for (CleaningItems c :
                 allCleaning) {
+            cleaningTotalCount+=c.getQuantity();
             cleaningTotalPrice += c.getPrice();
         }
 
