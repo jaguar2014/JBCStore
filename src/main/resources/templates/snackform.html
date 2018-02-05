@@ -9,19 +9,20 @@
 <form th:action="@{/addSnacks}" th:object="${snack}" method="post">
     <input type="hidden" th:field="*{id}" />
 
-    <input type="text" th:field="*{name}" />
+    <label for="name">Snack Name</label>
+    <input type="text" th:field="*{name}" id="name"/>
     <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span> <br/>
 
-
-    <input type="text" th:field="*{crunchiness}" />
+    <label for="crunch">Snack Crunchiness</label>
+    <input type="text" th:field="*{crunchiness}" id="crunch"/>
     <span th:if="${#fields.hasErrors('crunchiness')}" th:errors="*{crunchiness}"></span> <br/>
 
-
-    <input type="number" th:field="*{price}" />
+    <label for="price">Snack Price</label>
+    <input type="number" th:field="*{price}" id="price"/>
     <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span> <br/>
 
-
-    <input type="number" th:field="*{quantity}" />
+    <label for="quantity">Snack Quantity</label>
+    <input type="number" th:field="*{quantity}" id="quantity"/>
     <span th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></span> <br/>
 
 
