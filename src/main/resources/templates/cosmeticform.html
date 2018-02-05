@@ -9,7 +9,7 @@
 <form th:action="@{/addCosmetics}" th:object="${cosmetic}" method="post">
     <input type="hidden" th:field="*{id}" />
 
-    <label for="name">Snack Name</label>
+    <label for="name">Cosmetic Name</label>
     <input type="text" th:field="*{name}" id="name"/>
     <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span> <br/>
 
