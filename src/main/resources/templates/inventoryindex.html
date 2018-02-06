@@ -7,18 +7,28 @@
 
 </head>
 <body>
-<p>Welcome to JBC Grocery Store</p>
 
-<!--Navivation elements -->
-<ul display="none">
-    <a th:href="@{/addCosmetics}"><li >Add Cosmetic Inventroy</li></a>
-    <a th:href="@{/addCleaning}"><li >Add Cleaning Inventroy</li></a>
-    <a th:href="@{/addSnacks}"><li >Add Snacks Inventroy</li></a>
+<div class="container">
+<nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">JBC Store</a>
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="/addCosmetics">Add Cosmetic Inventroy</a></li>
+            <li><a href="/addCleaning">Add Cleaning Inventroy</a></li>
+            <li><a href="/addSnacks">Add Snacks Inventroy</a></li>
+        </ul>
+    </div>
 
-</ul>
-
-<!--end of navivation -->
-
+</nav>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-3 well">
@@ -45,10 +55,7 @@
 
 
         </div>
-
     </div>
-
-
 
 </div>
 

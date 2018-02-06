@@ -23,7 +23,7 @@
     <span th:if="${#fields.hasErrors('popularity')}" th:errors="*{popularity}"></span> <br/>
 
     <label for="price">Cosmetic Price</label>
-    <input type="number" th:field="*{price}" id="price"/>
+    <input type="number" step="any" th:field="*{price}" id="price"/>
     <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span> <br/>
 
 
